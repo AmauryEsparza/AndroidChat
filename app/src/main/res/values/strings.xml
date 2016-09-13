@@ -7,4 +7,8 @@
     <string name="login.error.message.login">Error trying to login %s</string>
     <string name="login.error.message.signup">Error trying to signup %s</string>
     <string name="login.notice.message.login">User added correctly</string>
+
+    <string name="contactlist.menu.action.signout">Sign out</string>
+    <string name="contactslist.title">Contacts</string>
+
 </resources>

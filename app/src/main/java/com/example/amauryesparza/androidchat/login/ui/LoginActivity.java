@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.amauryesparza.androidchat.R;
-import com.example.amauryesparza.androidchat.contactlist.ContactListActivity;
+import com.example.amauryesparza.androidchat.contactlist.ui.ContactListActivity;
 import com.example.amauryesparza.androidchat.login.LoginPresenter;
 import com.example.amauryesparza.androidchat.login.LoginPresenterImpl;
 
