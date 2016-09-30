@@ -10,12 +10,14 @@ import android.os.Bundle;
 
 import com.example.amauryesparza.androidchat.R;
 import com.example.amauryesparza.androidchat.contactlist.ContactListPresenter;
+import com.example.amauryesparza.androidchat.contactlist.ContactListPresenterImpl;
 import com.example.amauryesparza.androidchat.contactlist.ui.adapters.ContactListAdapter;
 import com.example.amauryesparza.androidchat.contactlist.ui.adapters.OnItemClickListener;
 import com.example.amauryesparza.androidchat.entities.User;
 import com.example.amauryesparza.androidchat.lib.GlideImageLoader;
 import com.example.amauryesparza.androidchat.lib.ImageLoader;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import butterknife.BindView;
@@ -42,16 +44,14 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
         setupAdapter();
         setupRecyclerView();
-//        presenter.onCreate();
+        presenter = new ContactListPresenterImpl(this);
+        presenter.onCreate();
         setupToolbar();
     }
 
     private void setupAdapter() {
         ImageLoader loader = new GlideImageLoader(this.getApplicationContext());
-        User user = new User();
-        user.setEmail("amauryesparza@gmail.com");
-        user.setOnline(true);
-        adapter = new ContactListAdapter(this, Arrays.asList(new User[]{user}), loader);
+        adapter = new ContactListAdapter(this, new ArrayList<User>(), loader);
     }
 
     private void setupRecyclerView() {
@@ -60,27 +60,27 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
     }
 
     private void setupToolbar() {
-//        toolbar.setTitle(presenter.getCurrentUserEmail());
+        toolbar.setTitle(presenter.getCurrentUserEmail());
         setSupportActionBar(toolbar);
     }
 
-//    @Override
-//    protected void onPause() {
-//        presenter.onPause();
-//        super.onPause();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        presenter.onResume();
-//        super.onResume();
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        presenter.onDestroy();
-//        super.onDestroy();
-//    }
+    @Override
+    protected void onPause() {
+        presenter.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        presenter.onResume();
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
 
     @OnClick(R.id.floatingButton)
     public void addContact(){
@@ -89,17 +89,17 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @Override
     public void onContactAdded(User user) {
-
+        adapter.add(user);
     }
 
     @Override
-    public void onContactModified(User user) {
-
+    public void onContactChanged(User user) {
+        adapter.modify(user);
     }
 
     @Override
     public void onContactRemoved(User user) {
-
+        adapter.remove(user);
     }
 
     @Override

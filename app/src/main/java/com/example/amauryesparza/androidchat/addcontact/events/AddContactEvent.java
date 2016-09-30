@@ -1,0 +1,7 @@
+package com.example.amauryesparza.androidchat.addcontact.events;
+
+/**
+ * Created by AmauryEsparza on 9/26/16.
+ */
+public class AddContactEvent {
+}

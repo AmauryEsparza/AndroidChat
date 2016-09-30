@@ -41,4 +41,14 @@ public class User {
     public void setOnline(boolean online) {
         this.online = online;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean equals = false;
+        if(obj instanceof User){
+            User user = (User) obj;
+            equals = this.email.equals(user.getEmail());
+        }
+        return equals;
+    }
 }

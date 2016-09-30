@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.amauryesparza.androidchat.R;
+import com.example.amauryesparza.androidchat.domain.AvatarHelper;
 import com.example.amauryesparza.androidchat.entities.User;
 import com.example.amauryesparza.androidchat.lib.ImageLoader;
 
@@ -50,12 +51,34 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.txtContactStatus.setText(isOnline);
         holder.txtContactStatus.setTextColor(color);
 
-        imageLoader.loadImage(holder.contactIcon, "");
+        imageLoader.loadImage(holder.contactIcon, AvatarHelper.getAvatarUrl(user.getEmail()));
     }
 
     @Override
     public int getItemCount() {
         return contactList.size();
+    }
+
+    public void add(User user) {
+        if(!contactList.contains(user)){
+            contactList.add(user);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void modify(User user) {
+        if (contactList.contains(user)) {
+            int index = contactList.indexOf(user);
+            contactList.set(index, user);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void remove(User user) {
+        if(contactList.contains(user)){
+            contactList.remove(user);
+            notifyDataSetChanged();
+        }
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder{

@@ -9,6 +9,4 @@ public interface ContactListInteractor {
     void unsubscribe();
     void destroyListener();
     void removeContact(String email);
-
-
 }
