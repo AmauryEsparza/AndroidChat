@@ -83,13 +83,17 @@ public class ContactListRepositoryImpl implements ContactListRepository {
     }
 
     private void handleContactEvents(DataSnapshot dataSnapshot, int eventType){
-        String email = dataSnapshot.getKey();
-        email = email.replace("_", ".");
-        boolean online = (Boolean) dataSnapshot.getValue();
-        User user = new User();
-        user.setEmail(email);
-        user.setOnline(online);
-        post(eventType, user);
+        if(dataSnapshot != null) {
+            String email = dataSnapshot.getKey();
+            email = email.replace("_", ".");
+            boolean online = (Boolean) dataSnapshot.getValue();
+            User user = new User();
+            user.setEmail(email);
+            user.setOnline(online);
+            post(eventType, user);
+        }else{
+            //Notify can't get values
+        }
     }
 
     @Override

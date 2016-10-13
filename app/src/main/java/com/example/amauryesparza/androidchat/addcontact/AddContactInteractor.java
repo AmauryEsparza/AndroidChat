@@ -5,4 +5,5 @@ package com.example.amauryesparza.androidchat.addcontact;
  */
 
 public interface AddContactInteractor {
+    void execute(String email);
 }

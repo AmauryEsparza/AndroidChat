@@ -11,4 +11,24 @@
     <string name="contactlist.menu.action.signout">Sign out</string>
     <string name="contactslist.title">Contacts</string>
 
+    <string name="addcontact.error.message">Cannot add that user</string>
+
+    <string name="dialog.delete.user">Are you sure want to delete this contact?</string>
+
+    <string name="dialog_button_ok">Yes</string>
+    <string name="dialog_button_cancel">Cancel</string>
+    <string name="dialog_button_add_contact">Add Contact</string>
+
+    <string name="addcontact.dialog.title">Add Contact</string>
+    <string name="addcontact.message.add">Add Contact</string>
+    <string name="addcontact.message.cancel">Cancel</string>
+    <string name="addcontact.message.contactadded">Contact added successful</string>
+    <string name="addcontact.error.contactnoadded">Cannot add the given contact</string>
+
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
