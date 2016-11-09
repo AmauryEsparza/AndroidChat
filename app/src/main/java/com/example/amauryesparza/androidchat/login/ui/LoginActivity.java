@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private LoginPresenter loginPresenter;
     private final static String LOG_TAG = LoginActivity.class.getSimpleName();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void signUpError(String error) {
-        Log.e(LOG_TAG, "Error registering the user ".concat(error));
+        Log.e(LOG_TAG, "The user cannot be added correctly ".concat(error));
         inputPassword.setText("");
         String msgError = String.format(getString(R.string.login_error_message_signup), error);
         inputPassword.setError(msgError);
